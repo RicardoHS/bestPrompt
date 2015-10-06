@@ -1,0 +1,25 @@
+#!/bin/bash
+prompt="bestPrompt > "
+function saliendoOkNo
+{
+	echo -n -e "\n> "
+}
+
+
+trap saliendoOkNo INT 
+trap saliendoOkNo SIGTSTP
+
+while true; do
+	echo -n "$prompt"
+	read miau
+	miau=$(echo $miau | awk '{print $1}')
+	if [ "$miau" = "ls" ] ;then ls;continue; fi
+	if [ "$miau" = "tren" ]; then sl -laF;continue;fi
+	if [ "$miau" ]; then
+		if [ "$miau" = "viruslancho" ];then
+			echo "Tu si que sabes"
+			exit 0
+		fi
+		echo "$miau: no se encontró la orden" 
+	fi
+done
