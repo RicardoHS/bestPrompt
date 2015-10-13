@@ -2,7 +2,7 @@
 prompt="bestPrompt > "
 function saliendoOkNo
 {
-	echo -n -e "\n> "
+	echo -e -n "\n$prompt"
 }
 
 
@@ -13,11 +13,15 @@ while true; do
 	echo -n "$prompt"
 	read miau
 	miau=$(echo $miau | awk '{print $1}')
+	if [ "$miau" = "exit" ] ; then echo -n "Exiting...";read kk;echo "hahaha NO"; continue; fi
 	if [ "$miau" = "ls" ] ;then ls;continue; fi
-	if [ "$miau" = "tren" ]; then sl -laF;continue;fi
+	if [ "$miau" = "miau" ]; then sl -laF;continue;fi
+	
+	if [ "$miau" = "help" ]; then echo -e -n "bestPrompt by @RHortelanoS (v.0.1) \n Try to find the exit, good luck.\n";continue;fi
+
 	if [ "$miau" ]; then
 		if [ "$miau" = "viruslancho" ];then
-			echo "Tu si que sabes"
+			echo "You know.."
 			exit 0
 		fi
 		echo "$miau: no se encontró la orden" 
